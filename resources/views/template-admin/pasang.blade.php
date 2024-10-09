@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="./assets/img/favicon.png">
 
 <title>
-   Material Dashboard 2  by Creative Tim
+  Dashboard
 </title>
 <!--     Fonts and icons     -->
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />

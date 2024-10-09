@@ -22,7 +22,7 @@ class ProdukController extends Controller
     public function search(Request $request){
 
         $query = $request->cari;
-
+        $data['kategori'] = Kategori::all();
         $data['produk'] = Produk::where('nama_produk', $query)->orWhereHas('kategori', function($c) use($query){
             $c->where('nama_kategori', $query);
         })->get();

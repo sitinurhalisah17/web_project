@@ -44,10 +44,10 @@
             <div class="collapse navbar-collapse justify-content-end" id="myNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="" class="nav-link">Home</a>
+                        <a href="/home" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">Produk</a>
+                        <a href="/produk" class="nav-link">Produk</a>
                     </li>
                     <li class="nav-item">
                         <a href="/logout" class="nav-link">Logout</a>

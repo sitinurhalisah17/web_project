@@ -37,6 +37,7 @@ Route::get('/detailproduk/{id}', [UserController::class, 'detailproduk']);
 Route::get('/detailprodukpria', [UserController::class, 'detailprodukpria']);
 Route::get('/alamat', [UserController::class, 'alamat']);
 Route::get('/keranjang', [UserController::class, 'keranjang']);
+Route::get('/checkout', [UserController::class, 'checkout']);
 
 
 Route::middleware('statusLogin')->group(function(){

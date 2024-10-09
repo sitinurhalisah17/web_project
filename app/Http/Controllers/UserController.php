@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Keranjang;
+use App\Models\Level;
 use App\Models\Produk;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -68,6 +69,9 @@ class UserController extends Controller
     public function keranjang(){
         return view('keranjang');
     }
+    public function checkout(){
+        return view('checkout');
+    }
     public function alamat(){
         return view('alamat');
     }
@@ -82,25 +86,28 @@ class UserController extends Controller
 
     public function show(){
         $data['user'] = User::orderby('name', 'asc')->get();
-        $data['total'] = User::count();
+        $data['total_user'] = User::count();
 
         return view('user', $data);
     }
     public function search(Request $request){
         $data['user'] = User::where('name', $request->cari)->orWhere('name', $request->cari)->get();
-        $data['total'] = $data['user']->count();
+        $data['total_user'] = $data['user']->count();
 
         return view('user', $data);
     }
 
     public function create(){
-        return view('user-create');
+        $data['level'] = Level::all();
+        return view('user-create',$data);
     }
 
     public function add(Request $request){
         $validatedata = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
+            'name' => ['required'],
+            'email' => ['required'],
+            'password' => ['required'],
+            'levels_id' => 'required',
             'foto' => 'image'
         ]);
 
@@ -112,9 +119,10 @@ class UserController extends Controller
         }
         $user = User::create([
             'name' => $request->name,
-            'foto' => $fileName,
             'email' => $request->email,
             'password' => $request->password,
+            'levels_id' => $request->levels_id,
+            'foto' => $fileName
         ]);
 
         if ($user){
@@ -142,6 +150,7 @@ class UserController extends Controller
     }
     public function edit(Request $request){
         $data['user'] = User::find($request->id);
+        $data['level'] = Level::all();
         return view('user-edit', $data);
     }
     public function update(Request $request){
@@ -154,9 +163,10 @@ class UserController extends Controller
 
         $update = User::where('id', $request->id)->update([
             'name' => $request->name,
-            'foto' => $fileName,
             'email' => $request->email,
-            'password' => $request->password ? bcrypt($request->password) : DB::raw('password'),
+            'password' => bcrypt($request->password),
+            'levels_id' => $request->levels_id
+
         ]);
 
         if($update){

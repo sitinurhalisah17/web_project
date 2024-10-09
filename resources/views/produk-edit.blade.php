@@ -16,16 +16,16 @@
                                 <input type="text" class="form-control" id="productName" placeholder="Masukkan nama produk"
                                 name="nama_produk" value="{{$produk->nama_produk}}">
                             </div>
-                            <div class="form-group pt-2">
-                                <label for="category">Kategori</label>
-                                <select name="kategoris_id" id="kategori">
-                                    @foreach ($kategori as $item)
-                                    <option value="{{ $item->id}}" {{$item->id == $produk->kategoris_id?'selected' : ''}}>{{$item->nama_kategori}}</option>
-                                    @endforeach
-                                    {{-- <option value="dompet wanita">dompet pria</option> --}}
-                                </select>
-                                
-                            </div>
+                                <div class="form-group pt-2">
+                                    <label for="category">Kategori</label>
+                                    <select name="kategoris_id" id="kategori">
+                                        @foreach ($kategori as $item)
+                                        <option value="{{ $item->id}}" {{$item->id == $produk->kategoris_id?'selected' : ''}}>{{$item->nama_kategori}}</option>
+                                        @endforeach
+                                        {{-- <option value="dompet wanita">dompet pria</option> --}}
+                                    </select>
+                                    
+                                </div>
                             <div class="form-group pt-2">
                                 <label for="price">Harga</label>
                                 <input type="number" class="form-control" id="price" placeholder="Masukkan harga produk"
